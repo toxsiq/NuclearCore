@@ -1,0 +1,11 @@
+keys:
+  usina:
+    rewards:
+      - type: economy
+        economy: TOXINA
+        amount: 250
+        chance: 0.6
+      - type: item
+        material: DIAMOND
+        amount: 3
+        chance: 0.4

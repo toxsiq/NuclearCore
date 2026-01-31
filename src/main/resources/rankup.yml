@@ -1,0 +1,105 @@
+ranks:
+  A:
+    cost:
+      money: 0
+      tokens: 0
+  B:
+    cost:
+      money: 1000
+      tokens: 100
+  C:
+    cost:
+      money: 2500
+      tokens: 250
+  D:
+    cost:
+      money: 5000
+      tokens: 500
+  E:
+    cost:
+      money: 7500
+      tokens: 750
+  F:
+    cost:
+      money: 10000
+      tokens: 1000
+  G:
+    cost:
+      money: 15000
+      tokens: 1500
+  H:
+    cost:
+      money: 20000
+      tokens: 2000
+  I:
+    cost:
+      money: 25000
+      tokens: 2500
+  J:
+    cost:
+      money: 30000
+      tokens: 3000
+  K:
+    cost:
+      money: 40000
+      tokens: 4000
+  L:
+    cost:
+      money: 50000
+      tokens: 5000
+  M:
+    cost:
+      money: 60000
+      tokens: 6000
+  N:
+    cost:
+      money: 70000
+      tokens: 7000
+  O:
+    cost:
+      money: 80000
+      tokens: 8000
+  P:
+    cost:
+      money: 90000
+      tokens: 9000
+  Q:
+    cost:
+      money: 100000
+      tokens: 10000
+  R:
+    cost:
+      money: 115000
+      tokens: 11500
+  S:
+    cost:
+      money: 130000
+      tokens: 13000
+  T:
+    cost:
+      money: 150000
+      tokens: 15000
+  U:
+    cost:
+      money: 170000
+      tokens: 17000
+  V:
+    cost:
+      money: 190000
+      tokens: 19000
+  W:
+    cost:
+      money: 210000
+      tokens: 21000
+  X:
+    cost:
+      money: 230000
+      tokens: 23000
+  Y:
+    cost:
+      money: 250000
+      tokens: 25000
+  Z:
+    cost:
+      money: 300000
+      tokens: 30000

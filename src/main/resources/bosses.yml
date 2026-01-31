@@ -1,0 +1,8 @@
+bosses:
+  toxico:
+    entity: WITHER
+    rewards:
+      - type: economy
+        economy: TOXINA
+        amount: 500
+        chance: 1.0

@@ -1,0 +1,11 @@
+luckyblocks:
+  toxica:
+    rewards:
+      - type: economy
+        economy: TOXINA
+        amount: 100
+        chance: 0.5
+      - type: economy
+        economy: RADIACAO
+        amount: 50
+        chance: 0.5
