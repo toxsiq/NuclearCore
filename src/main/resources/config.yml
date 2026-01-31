@@ -1,0 +1,94 @@
+settings:
+  autosave-seconds: 120
+
+usina:
+  world: world
+  min:
+    x: -100
+    y: 50
+    z: -100
+  max:
+    x: 100
+    y: 120
+    z: 100
+  teleport:
+    x: 0
+    y: 80
+    z: 0
+  radiation-base: 5.0
+  radiation-rank-bonus: 0.02
+  radiation-prestige-bonus: 0.1
+  tnt-toxina-base: 10.0
+  tnt-respawn-seconds: 10
+  tnt-cooldown-seconds: 2
+  isqueiro:
+    uranium:
+      max-level: 10
+      radiation-bonus-per-level: 0.05
+      cost-toxina: 100.0
+    toxinator:
+      max-level: 10
+      toxina-bonus-per-level: 0.1
+      cost-radiacao: 50.0
+    aspirador:
+      max-level: 5
+      chance-per-level: 0.05
+      cost-radiacao: 150.0
+
+skins:
+  reatora:
+    display: "<green>Reatora"
+    bonus: 0.0
+  radioativa:
+    display: "<yellow>Radioativa"
+    bonus: 0.25
+  atomica:
+    display: "<light_purple>Atômica"
+    bonus: 0.5
+  nuclear:
+    display: "<red>Nuclear"
+    bonus: 1.0
+
+mina:
+  world: world
+  location:
+    x: 0
+    y: 80
+    z: 0
+  reward-money: 5.0
+  reward-tokens: 1.0
+
+plantacoes:
+  world: world
+  location:
+    x: 50
+    y: 70
+    z: 50
+  crops:
+    - WHEAT
+    - CARROTS
+    - POTATOES
+  reward-cash: 3.0
+
+pesca:
+  world: world
+  location:
+    x: -50
+    y: 70
+    z: -50
+  base-fish: 2.0
+
+spawners:
+  reward-interval-seconds: 60
+  coin-reward: 20.0
+  token-reward: 5.0
+
+robos:
+  reward-interval-seconds: 60
+  base-reward:
+    cash: 50.0
+    toxina: 10.0
+    tokens: 5.0
+
+cheque:
+  tax: 0.1

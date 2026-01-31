@@ -1,0 +1,38 @@
+name: NuclearCore
+main: com.nuclearcore.NuclearCore
+version: 1.0.0
+api-version: 1.20
+author: NuclearCore
+commands:
+  rankup:
+    description: Sobe de rank.
+  prestigio:
+    description: Realiza prestigio.
+  usina:
+    description: Teleporta para usina e administra TNT.
+  isqueiro:
+    description: Recebe o Isqueiro Evolutivo.
+  mina:
+    description: Teleporta para a mina.
+  armazem:
+    description: Teleporta para o armazem.
+  pesca:
+    description: Teleporta para a pesca.
+  amuleto:
+    description: Gerencia amuletos.
+  cheque:
+    description: Cria cheques.
+  skinunlock:
+    description: Desbloqueia skins do isqueiro.
+  spawner:
+    description: Fornece spawners.
+  robo:
+    description: Gerencia robos.
+  luckyblock:
+    description: Fornece luckyblocks.
+  key:
+    description: Fornece chaves.
+  caixa:
+    description: Abre caixas fisicas.
+  boss:
+    description: Spawna bosses.

@@ -1,0 +1,11 @@
+caixas:
+  fisica:
+    rewards:
+      - type: economy
+        economy: CASH
+        amount: 1000
+        chance: 0.7
+      - type: item
+        material: GOLD_INGOT
+        amount: 5
+        chance: 0.3
