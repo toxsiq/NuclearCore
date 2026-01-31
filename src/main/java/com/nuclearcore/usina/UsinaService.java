@@ -12,11 +12,13 @@ import java.util.Map;
 import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import java.util.HashSet;
+import java.util.Set;
+import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -81,27 +83,32 @@ public class UsinaService {
         if (block.getType() != Material.TNT) {
             return;
         }
-        BlockState state = block.getState();
-        state.getPersistentDataContainer().set(tntKey, PersistentDataType.INTEGER, 1);
-        state.update(true, false);
+        Chunk chunk = block.getChunk();
+        Set<String> marks = getChunkMarks(chunk);
+        marks.add(serialize(block));
+        storeChunkMarks(chunk, marks);
     }
 
     public void unmarkTnt(Block block) {
         if (block.getType() != Material.TNT) {
             return;
         }
-        BlockState state = block.getState();
-        state.getPersistentDataContainer().remove(tntKey);
-        state.update(true, false);
+        Chunk chunk = block.getChunk();
+        Set<String> marks = getChunkMarks(chunk);
+        marks.remove(serialize(block));
+        storeChunkMarks(chunk, marks);
     }
 
     public boolean isUsinaTnt(Block block) {
         if (block.getType() != Material.TNT) {
             return false;
         }
-        BlockState state = block.getState();
-        PersistentDataContainer container = state.getPersistentDataContainer();
-        return container.has(tntKey, PersistentDataType.INTEGER) && isInside(block.getLocation());
+        if (!isInside(block.getLocation())) {
+            return false;
+        }
+        Chunk chunk = block.getChunk();
+        Set<String> marks = getChunkMarks(chunk);
+        return marks.contains(serialize(block));
     }
 
     public boolean isOnCooldown(Player player) {
@@ -133,5 +140,33 @@ public class UsinaService {
                 economyService.deposit(player.getUniqueId(), EconomyType.RADIACAO, total);
             }
         }, interval, interval);
+    }
+
+    private Set<String> getChunkMarks(Chunk chunk) {
+        PersistentDataContainer container = chunk.getPersistentDataContainer();
+        String raw = container.get(tntKey, PersistentDataType.STRING);
+        Set<String> marks = new HashSet<>();
+        if (raw == null || raw.isBlank()) {
+            return marks;
+        }
+        for (String entry : raw.split("\\|")) {
+            if (!entry.isBlank()) {
+                marks.add(entry);
+            }
+        }
+        return marks;
+    }
+
+    private void storeChunkMarks(Chunk chunk, Set<String> marks) {
+        PersistentDataContainer container = chunk.getPersistentDataContainer();
+        if (marks.isEmpty()) {
+            container.remove(tntKey);
+            return;
+        }
+        container.set(tntKey, PersistentDataType.STRING, String.join("|", marks));
+    }
+
+    private String serialize(Block block) {
+        return block.getX() + "," + block.getY() + "," + block.getZ();
     }
 }

@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -69,7 +68,6 @@ public class UsinaListener implements Listener {
         economyService.deposit(player.getUniqueId(), EconomyType.TOXINA, amount);
         block.setType(Material.AIR, false);
         int respawnSeconds = plugin.getConfig().getInt("usina.tnt-respawn-seconds", 10);
-        BlockState state = block.getState();
         plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
             block.setType(Material.TNT, false);
             usinaService.markTnt(block);

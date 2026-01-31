@@ -4,6 +4,7 @@ import com.nuclearcore.items.ItemKeys;
 import com.nuclearcore.luckyblocks.LuckyBlockService;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.block.TileState;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -34,15 +35,20 @@ public class LuckyBlockListener implements Listener {
             return;
         }
         BlockState state = event.getBlockPlaced().getState();
-        state.getPersistentDataContainer().set(keys.luckyblock(), PersistentDataType.STRING, type);
-        state.update(true, false);
+        if (state instanceof TileState tileState) {
+            tileState.getPersistentDataContainer().set(keys.luckyblock(), PersistentDataType.STRING, type);
+            tileState.update(true, false);
+        }
     }
 
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
         Block block = event.getBlock();
         BlockState state = block.getState();
-        PersistentDataContainer container = state.getPersistentDataContainer();
+        if (!(state instanceof TileState tileState)) {
+            return;
+        }
+        PersistentDataContainer container = tileState.getPersistentDataContainer();
         String type = container.get(keys.luckyblock(), PersistentDataType.STRING);
         if (type == null) {
             return;
